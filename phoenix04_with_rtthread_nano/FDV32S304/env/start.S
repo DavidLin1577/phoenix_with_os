@@ -49,7 +49,7 @@ _start:
 	/* argc = argv = 0 */
 	li a0, 0
 	li a1, 0
-	call main
+	call entry
 	tail exit
 
 1:

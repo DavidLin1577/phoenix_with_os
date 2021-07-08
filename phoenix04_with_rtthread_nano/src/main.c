@@ -10,14 +10,17 @@
 
 
 #include "lib_include.h"
-
-
+#include <rtthread.h>
 
 int main(void)
 {
-	printf("Hello world\r\n");
 	while(1)
 	{
+	    printf("Hello world\n");
+	    rt_thread_mdelay(500);
+
+	    printf("Hello riscv\n");
+	    rt_thread_mdelay(500);
 	}
 	return 0;
 }
