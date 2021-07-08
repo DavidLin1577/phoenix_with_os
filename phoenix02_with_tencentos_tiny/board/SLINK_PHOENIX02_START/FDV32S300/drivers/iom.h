@@ -1,11 +1,11 @@
 /**
  * @file iom.h
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -199,9 +199,9 @@
 #define PIN_INT_POL_HIGH 1
 
 // extern function declare
-void GPIO_PinConfigure(int pin, int analogEn, int outputEn, int puEn, int pdEn,
-                       int outOpenDrainEn);
-void GPIO_PinConfigStrongDrive(int pin, ControlStatus ctl);
+void GPIO_PinSelect(int pin, int fun);
+void GPIO_PinConfigure(int pin, int analogEn, int outputEn, int puEn, int pdEn, int outOpenDrainEn);
+void GPIO_PinConfigDrive(int pin, ControlStatus ctl);
 int GPIO_GetData(void);
 void GPIO_SetPin(int pin);
 void GPIO_ClrPin(int pin);

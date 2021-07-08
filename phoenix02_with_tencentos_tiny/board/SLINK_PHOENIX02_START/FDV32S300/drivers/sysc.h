@@ -3,9 +3,9 @@
  * @author bifie.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -172,5 +172,5 @@ void SYSC_PCLKDisable(ePCLKEN_Type perp);
 void SYSC_SetANAC_CLKDiv(int div, int m500kDiv);
 void SYSC_SetTimer1_3ClkDiv(int div);
 void SYSC_SetBZTimer4(int div);
-
+void SYSC_TestClkOutControl(int div, ControlStatus clt);
 #endif

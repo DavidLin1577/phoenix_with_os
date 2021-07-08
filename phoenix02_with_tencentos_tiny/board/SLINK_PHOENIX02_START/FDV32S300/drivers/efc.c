@@ -1,11 +1,11 @@
 /**
  * @file efc.c
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -148,7 +148,7 @@ eReturnType EFC_PageProgram(u32 u32Addr) {
  *
  * @param u32Addr :address
  * @return eReturnType :EFC_SUCCESS (= 0) , EFC_PAGE_ERASE_FAIL (!=0)
- * @note:eeprom only erase one wordï¿½?4Byte)
+ * @note:eeprom only erase one wordï¼?4Byte)
  */
 eReturnType EFC_PageErase(u32 u32Addr) {
     PARAM_CHECK((u32Addr < 0x10100000) ||

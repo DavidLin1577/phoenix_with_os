@@ -1,11 +1,11 @@
 /**
  * @file twc.h
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -162,11 +162,12 @@ void TWC_SWANBusConfig(int txBaud, int rxBaud, sSwanBusCfgParam *pParam);
 void TWC_SetCMDAndMask(int cmdRegNo, u16 cmd, u16 msk);
 u32 TWC_ReadData(void);
 void TWC_WriteData(u32 dat);
-// void TWC_SendControl(ControlStatus ctl);
+
 void TWC_SendEnable(void);  // gcc inline
 void TWC_SendDisable(void); // gcc inline
-void TWC_SwanBusSendStart(void);
+void TWC_SwanBusSendStartConfig(ControlStatus clt);
 void TWC_EnableIRQ(eTansferEnd_Type val);
-void TWC_ClrIRQFlag(eTansferEnd_Type val);
-
+void TWC_DisableIRQ(eTansferEnd_Type val);
+void TWC_ClrIntFlag(eTansferEnd_Type val);
+u32  TWC_GetStatusRegData(void);
 #endif

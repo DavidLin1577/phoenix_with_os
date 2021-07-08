@@ -1,11 +1,11 @@
 /**
  * @file crc.c
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -35,10 +35,10 @@ void CRC_DeInit(void) {
 /**
  * @brief get data CRC16
  *
- * @param pDat ï¼špoint data addr
- * @param u8DataType ï¿½? DATA_8BIT , DATA_16BIT , DATA_32BIT
- * @param u32Len  ï¼šdata len
- * @return u16 ï¼šCRC16
+ * @param pDat £ºpoint data addr
+ * @param u8DataType £º DATA_8BIT , DATA_16BIT , DATA_32BIT
+ * @param u32Len  £ºdata len
+ * @return u16 £ºCRC16
  */
 u16 CRC_Calculate(void *pDat, eDataType u8DataType, u32 u32Len) {
     int i;
@@ -79,9 +79,9 @@ u16 CRC_Calculate(void *pDat, eDataType u8DataType, u32 u32Len) {
 /**
  * @brief verify data
  *
- * @param pDat ï¼šdata addr
- * @param u8DataType ï¼šDATA_8BIT , DATA_16BIT , DATA_32BIT
- * @param u32Len  ï¼šdata len
+ * @param pDat £ºdata addr
+ * @param u8DataType £ºDATA_8BIT , DATA_16BIT , DATA_32BIT
+ * @param u32Len  £ºdata len
  * @return BOOL FALSE: 0 , TRUE 1;
  */
 BOOL CRC_Check(void *pDat, eDataType u8DataType, u32 u32Len, u16 crc) {

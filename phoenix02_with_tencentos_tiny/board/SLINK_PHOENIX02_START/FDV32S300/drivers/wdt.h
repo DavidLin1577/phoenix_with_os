@@ -1,11 +1,11 @@
 /**
  * @file wdt.h
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -30,6 +30,9 @@ typedef enum _OV_MODE {
     WDT_OV_INT = 0,
     WDT_OV_RST,
 } eOVModeType;
+
+#define LP_CLKSEL_LRC  0
+#define LP_CLKSEL_XTL  1
 
 #define WDT_StartCount()                                                       \
     {                                                                          \

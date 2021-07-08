@@ -1,11 +1,11 @@
 /**
  * @file lptimer.c
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -50,7 +50,7 @@ void LPT_Init(int iClkSrc, int iDel, int iMode) {
     PMU->WPT = PMU_WPT_V0;
     PMU->WPT = PMU_WPT_V1;
     PMU->CR |= PMU_CR_LPTCLKEN;
-    LPTIM->CR |= LPTIM_CR_EN;
+//    LPTIM->CR |= LPTIM_CR_EN;
 }
 
 /**

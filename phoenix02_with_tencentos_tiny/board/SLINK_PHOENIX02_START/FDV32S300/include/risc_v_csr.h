@@ -1,11 +1,11 @@
 /**
  * @file risc_v_csr.h
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-04-23
+ * @date 2020-04-23
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 

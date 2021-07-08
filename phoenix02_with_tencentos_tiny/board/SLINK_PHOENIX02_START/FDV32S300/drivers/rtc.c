@@ -1,11 +1,11 @@
 /**
  * @file rtc.c
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 #include "sysc.h"
@@ -85,9 +85,9 @@ void RTC_DeInit(void)
 /**
  * @brief set date
  *
- * @param year ï¿½? ï¿½?:19 (2019)
- * @param month ï¿½?
- * @param day ï¿½?
+ * @param year å¹? å¦?:19 (2019)
+ * @param month æœ?
+ * @param day å¤?
  * @param week æ˜ŸæœŸ
  *
  * @return BOOL ERROR  , SUCCESS

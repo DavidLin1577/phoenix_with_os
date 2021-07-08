@@ -1,11 +1,11 @@
 /**
  * @file sysc.c
- * @author David.lin
+ * @author bifei.tang
  * @brief
  * @version 0.1
- * @date 2021-06-04
+ * @date 2020-05-12
  *
- * @copyright Fanhai Data Tech. (c) 2021
+ * @copyright Fanhai Data Tech. (c) 2020
  *
  */
 
@@ -112,3 +112,15 @@ void SYSC_SetBZTimer4(int div) {
     PARAM_CHECK((div < DIV1) || (div > DIV128));
     SYSC->BZTIMCLKDIV = div;
 }
+/**
+ * @brief 测试时钟输出控制
+ *
+ * @param div 分频（div�?0-127�?+1�?*2
+ * @param clt
+ */
+void SYSC_TestClkOutControl(int div,ControlStatus clt)
+{
+    PARAM_CHECK((div < 0) || (div > 127));
+    SYSC->TESTCKSEL = (clt << 7) | div;
+}
+
