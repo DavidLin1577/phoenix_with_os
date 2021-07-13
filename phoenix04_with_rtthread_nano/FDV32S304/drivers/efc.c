@@ -118,7 +118,7 @@ eReturnType EFC_SingleProgram(u32 Addr, int iPrgType, u32 Data) {
  *
  * @param u32Addr :address
  * @return eReturnType :EFC_SUCCESS (= 0) , EFC_PAGE_ERASE_FAIL (!=0)
- * @note:eeprom only erase one wordï¿??4Byte)
+ * @note:eeprom only erase one wordé”Ÿï¿½??4Byte)
  */
 eReturnType EFC_PageErase(u32 u32Addr) {
     PARAM_CHECK((u32Addr < 0x10100000) || ((u32Addr > 0x10107fff) && (u32Addr < 0x10140000)) ||

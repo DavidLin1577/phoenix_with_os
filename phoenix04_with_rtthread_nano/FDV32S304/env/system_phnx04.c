@@ -23,7 +23,7 @@ unsigned int SystemCoreClock = 8000000;
 extern void trap_entry();
 
 /**
- * @brief 系统时钟初始�??
+ * @brief 系统时钟初始�?
  *
  */
 void SystemInit(void) {

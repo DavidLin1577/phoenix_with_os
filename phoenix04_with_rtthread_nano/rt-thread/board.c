@@ -13,6 +13,14 @@
 #include <rthw.h>
 #include <rtthread.h>
 #include "lib_include.h"
+#include "risc_v_csr.h"
+#include "system_phnx04.h"
+
+#define _SCB_BASE       (0xE0000000UL)
+#define _SYSTICK_CMPLO   (*(rt_uint32_t *)(_SCB_BASE + 0x04))
+#define _SYSTICK_CMOHI   (*(rt_uint32_t *)(_SCB_BASE + 0x08))
+#define _SYSTICK_LO      (*(rt_uint32_t *)(_SCB_BASE + 0x0C))
+#define _SYSTICK_HI      (*(rt_uint32_t *)(_SCB_BASE + 0x10))
 
 // Updates the variable SystemCoreClock and must be called 
 // whenever the core clock is changed during program execution.
@@ -23,15 +31,20 @@ extern void SystemCoreClockUpdate(void);
 // core clock.
 static uint32_t _SysTick_Config(rt_uint32_t ticks)
 {
-	TIM_TimerInit(TIM1, ticks);
-    PLIC_EnableIRQ(TIMER1_IRQn);
-	PLIC_SetPriority(TIMER1_IRQn, 1);
-	TIM_ClrIntFlag(TIM1);
-	TIM_EnableIRQ(TIM1);
+	if ((ticks - 1) > 0xFFFFFF)
+	{
+	    return 1;
+	}
 
-	TIM_EnableControl(TIM1, ENABLE);
-    
-    return 0;
+	_SYSTICK_CMPLO = ticks & 0xFFFF;
+	_SYSTICK_CMPLO = 65000;
+	_SYSTICK_CMOHI = 0x0;
+	_SYSTICK_LO    = 0x0;
+	_SYSTICK_HI    = 0x0;
+
+	EnableMtimeIRQ();
+
+	return 0;
 }
 
 #if defined(RT_USING_USER_MAIN) && defined(RT_USING_HEAP)
@@ -57,8 +70,7 @@ void rt_hw_board_init()
     SystemCoreClockUpdate();
     
     /* System Tick Configuration */
-    //_SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
-    _SysTick_Config(1000);
+    _SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
 
     /* Call components board initial (use INIT_BOARD_EXPORT()) */
 #ifdef RT_USING_COMPONENTS_INIT
@@ -70,10 +82,17 @@ void rt_hw_board_init()
 #endif
 }
 
-void TIMER1_IrqHandler(void)
+void MTIM_IntHandler(void)
 {
     /* enter interrupt */
     rt_interrupt_enter();
+
+	_SYSTICK_CMPLO = 800;
+	_SYSTICK_CMOHI = 0x0;
+	_SYSTICK_LO    = 0x0;
+	_SYSTICK_HI    = 0x0;
+
+	printf("MTIM_IntHandler\n");
 
     rt_tick_increase();
 

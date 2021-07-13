@@ -71,9 +71,8 @@ void TIM_TimerInit(TIM_Type *pTim, int del)
  *
  * @param pTim :TIM1-2
  * @param cntPolarity :TIM_CNT_POLARITY_HIGH , TIM_CNT_POLARITY_LOW
- * @param portSel :TIM1_CNT_PORT_P6_P7 , TIM2_CNT_PORT_P12_P13
  */
-void TIM_CounterInit(TIM_Type *pTim, int cntPolarity, int portSel)
+void TIM_CounterInit(TIM_Type *pTim, int cntPolarity)
 {
     SYSC->CLKENCFG |= SYSC_CLKENCFG_TIM_PCK | SYSC_CLKENCFG_IOM;
     PARAM_CHECK((pTim != TIM1) && (pTim != TIM2))
@@ -90,11 +89,6 @@ void TIM_CounterInit(TIM_Type *pTim, int cntPolarity, int portSel)
         {
             TIMERS->CON |= TIM_CON_EXTPOL_TIM1;
         }
-        PARAM_CHECK(portSel != TIM1_CNT_PORT_P6_P7);
-        IOM->AF0 &= ~IOM_AF0_P06_SEL;
-        IOM->AF0 |= (2 << 12);
-        IOM->AF0 &= ~IOM_AF0_P07_SEL;
-        IOM->AF0 |= (2 << 14);
         TIMERS->CON |= TIM_CON_EXTEN_TIM1;
         // TIMERS->CON |= TIM_CON_TE_TIM1;
     }
@@ -111,11 +105,6 @@ void TIM_CounterInit(TIM_Type *pTim, int cntPolarity, int portSel)
         {
             TIMERS->CON |= TIM_CON_EXTPOL_TIM2;
         }
-        PARAM_CHECK(portSel != TIM2_CNT_PORT_P12_P13);
-        IOM->AF0 &= ~IOM_AF0_P12_SEL;
-        IOM->AF0 |= (2 << 24);
-        IOM->AF0 &= ~IOM_AF0_P13_SEL;
-        IOM->AF0 |= (2 << 26);
 
         TIMERS->CON |= TIM_CON_EXTEN_TIM2;
         // TIMERS->CON |= TIM_CON_TE_TIM2;
@@ -129,10 +118,9 @@ void TIM_CounterInit(TIM_Type *pTim, int cntPolarity, int portSel)
  * @param pwmPolarity :TIM_PMW_POL_xxxx;
  * @param freq : Hz
  * @param duty :exp:duty=50 (50%)
- * @param portSel :TIMN_PWM_PORT_xxxx;
  * @param dtGap :us
  */
-void TIM_PWMInit(TIM_Type *pTim, int pwmPolarity, int freq, int duty, int portSel, int dtGap)
+void TIM_PWMInit(TIM_Type *pTim, int pwmPolarity, int freq, int duty, int dtGap)
 {
     PARAM_CHECK((pTim != TIM1) && (pTim != TIM2))
     SystemCoreClockUpdate();
@@ -142,21 +130,7 @@ void TIM_PWMInit(TIM_Type *pTim, int pwmPolarity, int freq, int duty, int portSe
         SYSC->CLKENCFG |= SYSC_CLKENCFG_TIM1_CNT;
         TIMERS->CON |= TIM_CON_TM_TIM1;
         TIMERS->CON |= TIM_CON_PWM_TIM1;
-        PARAM_CHECK((portSel != TIM1_PWM_PORT_P12_P16) && (portSel != TIM1_PWM_PORT_P14_P16));
-        if (portSel == TIM1_PWM_PORT_P12_P16)
-        {
-            IOM->AF0 &= ~IOM_AF0_P12_SEL;
-            IOM->AF0 |= (1 << 24);
-            IOM->AF1 &= ~IOM_AF1_P16_SEL;
-            IOM->AF1 |= (1 << 0);
-        }
-        else
-        {
-            IOM->AF0 &= ~IOM_AF0_P14_SEL;
-            IOM->AF0 |= (3 << 28);
-            IOM->AF1 &= ~IOM_AF1_P16_SEL;
-            IOM->AF1 |= (1 << 0);
-        }
+
         int div = SYSC->TIMCLKDIV & 0xff;
         int tcnt, pclk;
         while (1)
@@ -213,21 +187,7 @@ void TIM_PWMInit(TIM_Type *pTim, int pwmPolarity, int freq, int duty, int portSe
         SYSC->CLKENCFG |= SYSC_CLKENCFG_TIM2_CNT;
         TIMERS->CON |= TIM_CON_TM_TIM2;
         TIMERS->CON |= TIM_CON_PWM_TIM2;
-        PARAM_CHECK((portSel != TIM2_PWM_PORT_P13_P17) && (portSel != TIM2_PWM_PORT_P15_P17));
-        if (portSel == TIM2_PWM_PORT_P13_P17)
-        {
-            IOM->AF0 &= ~IOM_AF0_P13_SEL;
-            IOM->AF0 |= (1 << 26);
-            IOM->AF1 &= ~IOM_AF1_P17_SEL;
-            IOM->AF1 |= (1 << 2);
-        }
-        else
-        {
-            IOM->AF0 &= ~IOM_AF0_P15_SEL;
-            IOM->AF0 |= (3 << 30);
-            IOM->AF1 &= ~IOM_AF1_P17_SEL;
-            IOM->AF1 |= (1 << 2);
-        }
+
         int div = SYSC->TIMCLKDIV >> 8;
         int tcnt, pclk;
         while (1)
@@ -444,7 +404,7 @@ void TIM_ClrIntFlag(TIM_Type *pTim)
     }
 }
 /**
- * @brief 获得当前计数�?
+ * @brief 获得当前计数值
  *
  * @param pTim TIM1、TIM2
  * @return u32 计数结果

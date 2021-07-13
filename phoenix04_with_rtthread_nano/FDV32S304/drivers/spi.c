@@ -19,19 +19,27 @@
  * @param pol:SPI_CPOL_HIGH , SPI_CPOL_LOW
  * @param phase:SPI_CPHA_FIST , SPI_CPHA_MIDD
  * @param freq :set N (Hz)
- * @note 分频系数有限只能是最接近的频率设�?
+ * @note 分频系数有限只能是最接近的频率设置
  */
 void SPI_Init(int mode, int pol, int phase, int freq)
 {
+    int div = 0;
+    int tmp = 0;
+
     SYSC->CLKENCFG |= SYSC_CLKENCFG_SPI;
 
     PARAM_CHECK((pol != SPI_CPOL_HIGH) && (pol != SPI_CPOL_LOW));
     PARAM_CHECK((phase != SPI_CPHA_FIST) && (phase != SPI_CPHA_MIDD));
     PARAM_CHECK((mode != SPI_SR_MSTCFSR) && (mode != SPI_SLAVE));
+
     if (pol == SPI_CPOL_HIGH)
+    {
         SPI->CR0 |= SPI_CR0_CPOL;
+    }
     else
+    {
         SPI->CR0 &= ~SPI_CR0_CPOL;
+    }
     if (phase == SPI_CPHA_MIDD)
     {
         SPI->CR0 |= SPI_CR0_CPHA;
@@ -40,17 +48,20 @@ void SPI_Init(int mode, int pol, int phase, int freq)
     {
         SPI->CR0 &= ~SPI_CR0_CPHA;
     }
+
     if (mode == SPI_MASTER)
     {
         SPI->CR0 |= SPI_CR0_MSMODE;
         SystemCoreClockUpdate();
         PARAM_CHECK((SystemCoreClock / (freq) < 1) || (SystemCoreClock / (freq) > 256));
-        int div = SystemCoreClock / (freq);
-        int tmp = 0;
+        div = SystemCoreClock / (freq);
+
         while (1)
         {
             if (div < 2)
+            {
                 break;
+            }
             tmp += 1;
             div >>= 1;
         }

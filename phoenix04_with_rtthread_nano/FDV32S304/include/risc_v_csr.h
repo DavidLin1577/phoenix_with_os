@@ -64,7 +64,7 @@
 
 // mie
 #define MIE_MEIE (1 << 11) // ext int en
-// #define MIE_MTIE       (1<<7)   //tim int en
+#define MIE_MTIE (1<<7)   //tim int en
 #define MIE_MSIE (1 << 3) // soft int en
 
 // mip  (only read)
@@ -126,6 +126,9 @@
 
 #define EnableExtIRQ() SET_CSR(mie, MIE_MEIE)
 #define DisableExtIRQ() CLEAR_CSR(mie, MIE_MEIE)
+
+#define EnableMtimeIRQ() SET_CSR(mie, MIE_MTIE)
+#define DisableMtimeIRQ() CLEAR_CSR(mie, MIE_MTIE)
 
 #define EnableSoftIRQ() SET_CSR(mie, MIE_MSIE)
 #define DisableSoftIRQ() CLEAR_CSR(mie, MIE_MSIE)

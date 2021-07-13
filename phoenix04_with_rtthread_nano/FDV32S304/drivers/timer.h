@@ -85,8 +85,8 @@
 // extern function declare
 
 void TIM_TimerInit(TIM_Type *pTim,int del);
-void TIM_CounterInit(TIM_Type *pTim, int cntPolarity, int portSel);
-void TIM_PWMInit(TIM_Type *pTim, int pwmPolarity, int freq, int duty, int portSel, int dtGap);
+void TIM_CounterInit(TIM_Type *pTim, int cntPolarity);
+void TIM_PWMInit(TIM_Type *pTim, int pwmPolarity, int freq, int duty, int dtGap);
 void TIM_DeInit(TIM_Type *pTim);
 void TIM_EnableControl(TIM_Type *pTim, int iCtrl);
 void TIM_EnableIRQ(TIM_Type *pTim);

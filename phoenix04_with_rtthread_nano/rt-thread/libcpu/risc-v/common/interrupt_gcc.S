@@ -10,7 +10,7 @@
 #include "cpuport.h"
 
  .section      .text.entry
-  .align 6     /* In ECLIC mode, the trap entry must be 64bytes aligned */
+  .align 2     /* In ECLIC mode, the trap entry must be 64bytes aligned */
   .global irq_entry
 irq_entry:
 

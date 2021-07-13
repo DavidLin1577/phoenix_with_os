@@ -15,7 +15,7 @@
 extern unsigned int SystemCoreClock;
 
 __attribute__((weak)) void MSOFT_IntHandler(void){};
-// __attribute__((weak)) void MTIM_IntHandler(void){};
+__attribute__((weak)) void MTIM_IntHandler(void){};
 __attribute__((weak)) void MEXP_Handler(void){};
 __attribute__((weak)) void NMI_Handler(void){};
 
@@ -97,9 +97,9 @@ unsigned int handle_trap(unsigned int mcause, unsigned int epc) {
     } else if ((mcause & MCAUSE_INT) &&
                ((mcause & MCAUSE_CAUSE) == EXP_M_SOFT_INT)) {
         MSOFT_IntHandler();
-        // } else if ((mcause & MCAUSE_INT) && ((mcause & MCAUSE_CAUSE) ==
-        // EXP_M_TIM_INT)){
-        //     MTIM_IntHandler();
+        } else if ((mcause & MCAUSE_INT) && ((mcause & MCAUSE_CAUSE) ==
+          EXP_M_TIM_INT)){
+          MTIM_IntHandler();
     } else if (mcause == 0x1e) {
         NMI_Handler();
     } else {

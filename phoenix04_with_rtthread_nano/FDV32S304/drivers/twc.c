@@ -316,7 +316,7 @@ void TWC_SwanBusSendStartConfig(ControlStatus clt)
 /**
  * @brief:enable interrupt
  *
- * @param :val TWC_RX_FRAME_END | TWC_TX_FRAME_END ,支持或操作一次设置多�?
+ * @param :val TWC_RX_FRAME_END | TWC_TX_FRAME_END ,支持或操作一次设置多个
  */
 void TWC_EnableIRQControl(eTansferEnd_Type val)
 {
@@ -327,7 +327,7 @@ void TWC_EnableIRQControl(eTansferEnd_Type val)
 /**
  * @brief:Clear interrupt flag
  *
- * @param :val TWC_RX_FRAME_END | TWC_TX_FRAME_END ,支持或操作一次设置多�?
+ * @param :val TWC_RX_FRAME_END | TWC_TX_FRAME_END ,支持或操作一次设置多个
  */
 void TWC_ClrIntFlag(eTansferEnd_Type val)
 {
@@ -335,7 +335,7 @@ void TWC_ClrIntFlag(eTansferEnd_Type val)
 }
 
 /**
- * @brief 获得状�?�寄存器数据
+ * @brief 获得状态寄存器数据
  *
  * @return u32
  */

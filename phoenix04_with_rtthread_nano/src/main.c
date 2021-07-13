@@ -16,11 +16,11 @@ int main(void)
 {
 	while(1)
 	{
-	    printf("Hello world\n");
-	    rt_thread_mdelay(50000);
+	    //printf("Hello world\n");
+	    //rt_thread_mdelay(50000);
 
-	    printf("Hello riscv\n");
-	    rt_thread_mdelay(50000);
+	    //printf("Hello riscv\n");
+	    //rt_thread_mdelay(50000);
 	}
 	return 0;
 }

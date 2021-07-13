@@ -116,7 +116,7 @@ void SYSC_SetTimer2ClkDiv(int div) {
 /**
  * @brief 测试时钟输出控制
  *
- * @param div 分频（div�?0-127�?+1�?*2
+ * @param div 分频（div（0-127）+1）*2
  * @param clt
  */
 void SYSC_TestClkOutControl(int div,ControlStatus clt)

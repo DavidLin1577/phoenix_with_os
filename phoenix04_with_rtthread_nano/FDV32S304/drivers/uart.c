@@ -165,7 +165,7 @@ void UART_RcvVerifyCfg(UART_Type *psUart, int chk)
  * @brief enable control
  *
  * @param psUart :UART1,UART2
- * @param enType :UART_EN_TYPE_SM2 | UART_EN_TYPE_REN | UART_EN_TYPE_SFD,支持或操作一次设置多�?
+ * @param enType :UART_EN_TYPE_SM2 | UART_EN_TYPE_REN | UART_EN_TYPE_SFD,支持或操作一次设置多个
  */
 void UART_EnableControl(UART_Type *psUart, int enType)
 {
@@ -187,7 +187,7 @@ void UART_EnableControl(UART_Type *psUart, int enType)
  * @brief enable interrupt
  *
  * @param psUart :UART1,UART2
- * @param type: UART_IRQ_TYPE_RXST | UART_IRQ_TYPE_RX | UART_IRQ_TYPE_TX,支持或操作一次设置多�?
+ * @param type: UART_IRQ_TYPE_RXST | UART_IRQ_TYPE_RX | UART_IRQ_TYPE_TX,支持或操作一次设置多个
  */
 void UART_EnableIRQ(UART_Type *psUart, int type)
 {
@@ -203,7 +203,7 @@ void UART_EnableIRQ(UART_Type *psUart, int type)
  * @brief disable interrupt
  *
  * @param psUart :UART1,UART2,LPUART
- * @param type: UART_IRQ_TYPE_RXST | UART_IRQ_TYPE_RX | UART_IRQ_TYPE_TX,支持或操作一次设置多�?
+ * @param type: UART_IRQ_TYPE_RXST | UART_IRQ_TYPE_RX | UART_IRQ_TYPE_TX,支持或操作一次设置多个
  */
 void UART_DisableIRQ(UART_Type *psUart, int type)
 {
@@ -282,11 +282,11 @@ u16 UART_Receive9BitData(UART_Type *psUart)
         return psUart->SBUF;
 }
 /**
- * @brief 写数据到发�?�寄存器包括bit8
+ * @brief 写数据到发送寄存器包括bit8
  *
  * @param psUart:UART1,UART2
  * @param dat send data
- * @note 不查询发送完成标�?? */
+ * @note 不查询发送完成标�? */
 void UART_WriteData(UART_Type *psUart, u16 dat)
 {
     if (dat & (1 << 8))

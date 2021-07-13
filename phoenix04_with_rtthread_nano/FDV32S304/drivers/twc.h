@@ -170,4 +170,5 @@ void TWC_SwanBusSendStartConfig(ControlStatus clt);
 void TWC_EnableIRQControl(eTansferEnd_Type val);
 void TWC_ClrIntFlag(eTansferEnd_Type val);
 u32  TWC_GetStatusRegData(void);
-#endif
+
+#endif /*__TWC_H__*/

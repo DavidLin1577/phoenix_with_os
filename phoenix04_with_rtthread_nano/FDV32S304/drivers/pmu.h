@@ -15,17 +15,17 @@
 
 // reg bits def
 // pmu CR
-#define PMU_CR_HRCKEEPALIVE 	BIT(10)
-#define PMU_CR_VDDLPCFG 		BITS(8, 9) // dp/pd valid
-#define PMU_CR_VDDLPCFG_1P5 	(0 << 8)
-#define PMU_CR_VDDLPCFG_1P2 	(1 << 8)
+#define PMU_CR_HRCKEEPALIVE 	    BIT(10)
+#define PMU_CR_VDDLPCFG 		    BITS(8, 9) // dp/pd valid
+#define PMU_CR_VDDLPCFG_1P5 	    (0 << 8)
+#define PMU_CR_VDDLPCFG_1P2 	    (1 << 8)
 
-#define PMU_CR_WDTCLKEN 		BIT(7)
-#define PMU_CR_LPTCLKEN 		BIT(6)
+#define PMU_CR_WDTCLKEN 		    BIT(7)
+#define PMU_CR_LPTCLKEN 		    BIT(6)
 
-#define PMU_CR_LVDCHIPRSTEN 	BIT(4)
-#define PMU_CR_PDNEN 			BITS(0, 3)
-#define PMU_CR_PDNEN_V 			0x0a
+#define PMU_CR_LVDCHIPRSTEN 	    BIT(4)
+#define PMU_CR_PDNEN 			    BITS(0, 3)
+#define PMU_CR_PDNEN_V 			    0x0a
 
 // PMU WKCFG
 #define PMU_WKCFG_PMUWKMODE 		BIT(9)
@@ -43,14 +43,14 @@
 #define PMU_WKCFG_GPIOWKEN_DISABLE	0
 
 // PMU SOFTRST
-#define PMU_SOFTRST_DIG 	BIT(1)
-#define PMU_SOFTRST_CHIP 	BIT(0)
+#define PMU_SOFTRST_DIG 	        BIT(1)
+#define PMU_SOFTRST_CHIP 	        BIT(0)
 
 // PMU WKSTS
-#define PMU_WKSTS_TWCWKSTS	BIT(8)
-#define PMU_WKSTS_LPTWKSTS 	BIT(5)
-#define PMU_WKSTS_WDTWKSTS 	BIT(4)
-#define PMU_WKSTS_GPIOWKSTS BITS(0, 3)
+#define PMU_WKSTS_TWCWKSTS	        BIT(8)
+#define PMU_WKSTS_LPTWKSTS 	        BIT(5)
+#define PMU_WKSTS_WDTWKSTS 	        BIT(4)
+#define PMU_WKSTS_GPIOWKSTS         BITS(0, 3)
 
 // PMU RSRSTS
 #define PMU_RSTSTS_PORRSTSTS 		BIT(5)
@@ -74,25 +74,25 @@
 
 #define PMU_INTEN_GPIOWKINTEN_PIN(x) (x << 8)
 
-#define PMU_WPT_V0 0xc3
-#define PMU_WPT_V1 0x3c
-#define PMU_WPT_UNLOCK()                                                       \
-    {                                                                          \
-        PMU->WPT = 0xc3;                                                       \
-        PMU->WPT = 0x3c;                                                       \
-    }
+#define PMU_WPT_V0                  (0xc3)
+#define PMU_WPT_V1                  (0x3c)
+#define PMU_WPT_UNLOCK()            \
+{                                   \
+    PMU->WPT = 0xc3;                \
+    PMU->WPT = 0x3c;                \
+}
 
 // extend define
-#define PMU_WK_PIN16 	1
-#define PMU_WK_PIN17 	2
-#define PMU_WK_PIN18 	4
-#define PMU_WK_PIN19 	8
+#define PMU_WK_PIN16 	            1
+#define PMU_WK_PIN17 	            2
+#define PMU_WK_PIN18 	            4
+#define PMU_WK_PIN19 	            8
 
-#define PMU_WK_LOW 		0
-#define PMU_WK_HIGH 	1
+#define PMU_WK_LOW 		            0
+#define PMU_WK_HIGH 	            1
 
-#define PMU_WK_FLAG 	0
-#define PMU_RST_FLAG 	1
+#define PMU_WK_FLAG 	            0
+#define PMU_RST_FLAG 	            1
 
 // extern function
 

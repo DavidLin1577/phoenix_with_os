@@ -1,6 +1,6 @@
 /**
  * @file sys.h
- * @author bifie.tang
+ * @author 
  * @brief
  * @version 0.1
  * @date 2020-05-12
@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef __SYSC_H
-#define __SYSC_H
+#ifndef __SYSC_H__
+#define __SYSC_H__
 
 #include "phnx04.h"
 
@@ -29,59 +29,59 @@
 #define SYSC_CLKCTRCFG_SYS_CLK_SEL_LRC 	(1 << 4)
 
 // SYSC_WRPROCFG
-#define SYSC_WRPROCFG 		BITS(15, 0)
+#define SYSC_WRPROCFG 		            BITS(15, 0)
 
-#define SYSC_WRPROCFG_V0 	0x5a5a
-#define SYSC_WRPROCFG_V1 	0xa5a5
-#define SYSC_WPT_UNLOCK()                                                      \
-    {                                                                          \
-        SYSC->WRPROCFG = 0x5a5a;                                               \
-        SYSC->WRPROCFG = 0xa5a5;                                               \
-    }
+#define SYSC_WRPROCFG_V0 	            0x5a5a
+#define SYSC_WRPROCFG_V1 	            0xa5a5
+#define SYSC_WPT_UNLOCK()               \
+{                                       \
+    SYSC->WRPROCFG = 0x5a5a;            \
+    SYSC->WRPROCFG = 0xa5a5;            \
+}
 
 // SYSC_CLKENCFG
-#define SYSC_CLKENCFG_TWC_MRCK 		BIT(21)
-#define SYSC_CLKENCFG_TWC 			BIT(19)
-#define SYSC_CLKENCFG_LPTIM 		BIT(15)
-#define SYSC_CLKENCFG_WDT 			BIT(14)
-#define SYSC_CLKENCFG_PMU 			BIT(13)
-#define SYSC_CLKENCFG_ANAC 			BIT(12)
-#define SYSC_CLKENCFG_DCLK_HCK 		BIT(11)
-#define SYSC_CLKENCFG_IOM 			BIT(10)
-#define SYSC_CLKENCFG_TIM2_CNT 		BIT(7)
-#define SYSC_CLKENCFG_TIM1_CNT 		BIT(6)
-#define SYSC_CLKENCFG_TIM_PCK 		BIT(5)
-#define SYSC_CLKENCFG_UART2 		BIT(4)
-#define SYSC_CLKENCFG_UART1 		BIT(3)
-#define SYSC_CLKENCFG_SPI 			BIT(2)
-#define SYSC_CLKENCFG_APB			BIT(0)
+#define SYSC_CLKENCFG_TWC_MRCK 		    BIT(21)
+#define SYSC_CLKENCFG_TWC 			    BIT(19)
+#define SYSC_CLKENCFG_LPTIM 		    BIT(15)
+#define SYSC_CLKENCFG_WDT 			    BIT(14)
+#define SYSC_CLKENCFG_PMU 			    BIT(13)
+#define SYSC_CLKENCFG_ANAC 			    BIT(12)
+#define SYSC_CLKENCFG_DCLK_HCK 		    BIT(11)
+#define SYSC_CLKENCFG_IOM 			    BIT(10)
+#define SYSC_CLKENCFG_TIM2_CNT 		    BIT(7)
+#define SYSC_CLKENCFG_TIM1_CNT 		    BIT(6)
+#define SYSC_CLKENCFG_TIM_PCK 		    BIT(5)
+#define SYSC_CLKENCFG_UART2 		    BIT(4)
+#define SYSC_CLKENCFG_UART1 		    BIT(3)
+#define SYSC_CLKENCFG_SPI 			    BIT(2)
+#define SYSC_CLKENCFG_APB			    BIT(0)
 
 // SYSC_MSFTRSTCFG
-#define SYSC_MSFTRSTCFG_TWC 		BIT(9)
-#define SYSC_MSFTRSTCFG_ANAC 		BIT(7)
-#define SYSC_MSFTRSTCFG_HCLK 		BIT(6)
-#define SYSC_MSFTRSTCFG_TIMER 		BIT(4)
-#define SYSC_MSFTRSTCFG_UART2 		BIT(3)
-#define SYSC_MSFTRSTCFG_UART1 		BIT(2)
-#define SYSC_MSFTRSTCFG_SPI 		BIT(1)
+#define SYSC_MSFTRSTCFG_TWC 		    BIT(9)
+#define SYSC_MSFTRSTCFG_ANAC 		    BIT(7)
+#define SYSC_MSFTRSTCFG_HCLK 		    BIT(6)
+#define SYSC_MSFTRSTCFG_TIMER 		    BIT(4)
+#define SYSC_MSFTRSTCFG_UART2 		    BIT(3)
+#define SYSC_MSFTRSTCFG_UART1 		    BIT(2)
+#define SYSC_MSFTRSTCFG_SPI 		    BIT(1)
 
 // SYSC_TESTCKSEL
-#define SYSC_TESTCKSEL_EN 			BIT(7)
-#define SYSC_TESTCKSEL_CLK_DIV 		BITS(0, 6)
-#define SYSC_TESTCKSEL_CLK_DIV_pos 	(0) // div(x+1)*2
+#define SYSC_TESTCKSEL_EN 			    BIT(7)
+#define SYSC_TESTCKSEL_CLK_DIV 		    BITS(0, 6)
+#define SYSC_TESTCKSEL_CLK_DIV_pos 	    (0) // div(x+1)*2
 
 // SYSC_ANCLKDIV
-#define SYSC_ANAC_500K_CLK_DIV 		BITS(4, 8)
-#define SYSC_ANAC_ANAC_SCLK_DIV 	BITS(0, 3)
-#define SYSC_ANAC_500K_CLK_DIV_pos 	(4)  // 0-1f:div(x+1)
-#define SYSC_ANAC_ANAC_SCLK_DIV_pos (0) // 0-0f:div(x+1)*2
+#define SYSC_ANAC_500K_CLK_DIV 		    BITS(4, 8)
+#define SYSC_ANAC_ANAC_SCLK_DIV 	    BITS(0, 3)
+#define SYSC_ANAC_500K_CLK_DIV_pos 	    (4)  // 0-1f:div(x+1)
+#define SYSC_ANAC_ANAC_SCLK_DIV_pos     (0) // 0-0f:div(x+1)*2
 
 // SYSC_TIMCLKDIV
-#define SYSC_TIM1CLKDIV 			BITS(0, 7)
-#define SYSC_TIM1CLKDIV_pos 		(0) // 0-ff:div(x+1)
+#define SYSC_TIM1CLKDIV 			    BITS(0, 7)
+#define SYSC_TIM1CLKDIV_pos 		    (0) // 0-ff:div(x+1)
 
-#define SYSC_TIM2CLKDIV     		BITS(8, 15)
-#define SYSC_TIM2CLKDIV_pos 		(8) // 0-ff:div(x+1)
+#define SYSC_TIM2CLKDIV     		    BITS(8, 15)
+#define SYSC_TIM2CLKDIV_pos 	 	    (8) // 0-ff:div(x+1)
 
 #define SYSC_GetAPBCLK()                                                       \
     (SystemCoreClock /                                                         \
@@ -97,8 +97,8 @@
                         1))
 
 // extend define
-#define SYSC_CLK_SRC_HRC 0
-#define SYSC_CLK_SRC_LRC 1
+#define SYSC_CLK_SRC_HRC                (0)
+#define SYSC_CLK_SRC_LRC                (1)
 
 typedef enum _RST_M {
     PRST_SPI 	= (1 << 1),
@@ -139,4 +139,5 @@ void SYSC_SetANAC_CLKDiv(int div, int m500kDiv);
 void SYSC_SetTimer1ClkDiv(int div);
 void SYSC_SetTimer2ClkDiv(int div);
 void SYSC_TestClkOutControl(int div, ControlStatus clt);
-#endif
+
+#endif /*__SYSC_H__*/

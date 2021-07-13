@@ -1,6 +1,6 @@
 /**
  * @file lptimer.h
- * @author bifei.tang
+ * @author 
  * @brief
  * @version 0.1
  * @date 2020-05-12
@@ -8,8 +8,8 @@
  * @copyright Fanhai Data Tech. (c) 2020
  *
  */
-#ifndef __LPTIM_H
-#define __LPTIM_H
+#ifndef __LPTIM_H__
+#define __LPTIM_H__
 #include "phnx04.h"
 
 // register bits defines
@@ -25,13 +25,14 @@
 // LPTIM_STS
 #define LPTIM_STS 		BIT(0)
 
-typedef enum _CNT_MODE {
+typedef enum _CNT_MODE 
+{
     LPT_SIG_TIME_CNT = 0,
     LPT_PIT_CNT,
 } eCntModeType;
 
 #define LPT_GetIntFlag() (LPTIM->INTSTSG & LPTIM_STS)
-#define LPT_ClrIntFlag()                                                       \
+#define LPT_ClrIntFlag()                            \
     { LPTIM->INTSTS = LPTIM_STS; }
 
 // function
@@ -40,6 +41,6 @@ void LPT_DeInit(void);
 void LPT_EnableControl(int iCtrl);
 void LPT_EnableIRQ(void);
 void LPT_DisableIRQ(void);
-u16 LPT_GetCount(void);
+u16  LPT_GetCount(void);
 
-#endif
+#endif /*__LPTIM_H__*/
